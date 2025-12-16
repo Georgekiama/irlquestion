@@ -138,17 +138,17 @@ const questions = [
 
 export default function TerminologyQuiz() {
   const [currentQ, setCurrentQ] = useState(0);
-  const [selected, setSelected] = useState(null);
+  const [selected, setSelected] = useState<number | null>(null);
   const [showResult, setShowResult] = useState(false);
   const [score, setScore] = useState(0);
-  const [answers, setAnswers] = useState([]);
+  const [answers, setAnswers] = useState<Array<{ question: number; selected: number; correct: number; isCorrect: boolean }>>([]);
   const [quizComplete, setQuizComplete] = useState(false);
   const [mode, setMode] = useState('start'); // 'start', 'quiz', 'results'
 
   const q = questions[currentQ];
   const progress = ((currentQ + 1) / questions.length) * 100;
 
-  const handleSelect = (idx) => {
+  const handleSelect = (idx: number) => {
     if (showResult) return;
     setSelected(idx);
   };
